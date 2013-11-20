@@ -12,5 +12,6 @@ class CreateStudentAssignments < ActiveRecord::Migration
 
     add_index :student_assignments, :assignment_id
     add_index :student_assignments, :user_id
+
   end
 end
