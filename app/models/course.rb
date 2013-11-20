@@ -19,7 +19,13 @@ class Course < ActiveRecord::Base
 	has_many :teachers, -> {where :course_memberships.role => 'teacher'}, class_name: 'User' 
 
 	has_many :assignments
+<<<<<<< HEAD
 
+=======
+	# scope :current, -> { where("'start_date' < ?", Date.today) && ("'end_date' > ?", Date.today)}
+  # scope :past, -> { where("'end_date' < ?", Date.today)}
+ #  scope :past, -> { where("'end_date' < ?", Date.today)}=======
+>>>>>>> 7d3a7604942b6ae2047cb7b667056ca2aafa1a3a
   has_many :quizzes, :class_name => "Assignment"
   has_many :homeworks, :class_name => "Assignment"
   has_many :projects, :class_name => "Assignment"
@@ -35,4 +41,9 @@ class Course < ActiveRecord::Base
   	self.users.where(:course_memberships => {:role => "student"})
   end
 
+<<<<<<< HEAD
+=======
+>>>>>>> 4e73e0d6e296f451d972a3c3886fbd68c9dba1e7
+>>>>>>> 7d3a7604942b6ae2047cb7b667056ca2aafa1a3a
 end
+>>>>>>> abigezunt-selfjoins
