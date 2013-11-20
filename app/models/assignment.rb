@@ -14,9 +14,7 @@
 
 class Assignment < ActiveRecord::Base
 	belongs_to :course
-	belongs_to :user
-	has_many :finished_assignments, class_name: "Assignment", foreign_key: "assignment_id"
-	belongs_to :master_assignment, class_name: "Assignment"
+	has_many :students, :through => :contributions, class_name: 'User' 
   validates_inclusion_of :assignment_type, :in => %w[quiz homework project]
 	
 	def quiz
