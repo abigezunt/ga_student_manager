@@ -13,4 +13,5 @@
 class CourseMembership < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :course
+  scope :current, -> { where("'course.end_date' > ?", Date.today)}
 end
