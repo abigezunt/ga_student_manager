@@ -5,10 +5,13 @@
 #  id                      :integer          not null, primary key
 #  first_name              :string(255)
 #  last_name               :string(255)
-#  is_admin                :boolean
+#  is_admin                :boolean          default(FALSE)
 #  telephone               :string(255)
-#  address                 :text
 #  email                   :string(255)
+#  street_address          :text
+#  city                    :string(255)
+#  state                   :string(255)
+#  zip_code                :string(255)
 #  emergency_contact       :string(255)
 #  emergency_contact_phone :string(255)
 #  github_url              :string(255)
@@ -39,9 +42,25 @@
 #
 
 class User < ActiveRecord::Base
-  	validates_inclusion_of :role, :in => %w[student teacher]
+
 	has_many :course_memberships, :dependent => :destroy
 	has_many :courses, through: :course_memberships
-  	has_many :contributions
+	has_many :contributions
 	has_many :assignments, through: :contributions
+
+	has_many :quizzes, :class_name => "Contribution"
+  has_many :homeworks, :class_name => "Contribution"
+  has_many :projects, :class_name => "Contribution"
+
+  # scope :with_role, lamda{|role| includes(:course_membership).where(:course_memberships => {:role => role}) }
+  # User.with_role "Student" 
+  
+  # def role
+  #         CourseMembership.current.where(user_id: self.id).role
+  #         #self.course_membership.current.role
+  # end
+
+  # def current_course
+  #         CourseMembership.current.where(user_id: self.id).course
+  # end
 end
