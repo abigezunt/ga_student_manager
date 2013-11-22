@@ -1,6 +1,7 @@
 {
   "RSpec": {
     "coverage": {
+
       "/Users/abby/Code/ga_student_manager/app/helpers/application_helper.rb": [
         1,
         null
@@ -14,10 +15,12 @@
         null
       ],
       "/Users/abby/Code/ga_student_manager/app/controllers/sessions_controller.rb": [
+
         1,
         null,
         null,
         null,
+
         1,
         0,
         0,
