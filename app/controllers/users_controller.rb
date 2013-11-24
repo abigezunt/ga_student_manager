@@ -2,36 +2,37 @@ class UsersController < ApplicationController
 	before_filter :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 	def index 
-		# # returns all the courses ever taught by the current user
-		# @courses = current_user.courses_teaching
+		# returns all the courses ever taught by the current user
+		@courses = current_user.courses_teaching
 
-		# @course = Course(params[:course_id])
+		@course = Course(params[:course_id])
 
-		# # instance methods you can call on course:
+		# instance methods you can call on course:
 
-		# @projects = @course.projects
-		# @quizzes = @course.quizzes
-		# @homeworks = @course.homeworks
+		@projects = @course.projects
+		@quizzes = @course.quizzes
+		@homeworks = @course.homeworks
 
-  #   # one_on_ones are tricky because they belong to two users.  for now:
+    # one_on_ones are tricky because they belong to two users.  for now:
 
-		# @one_on_ones = OneOnOne.where(student_id: params[:id])
-		# @one_on_ones = OneOnOne.where(teacher_id: params[:id])
+		@one_on_ones = OneOnOne.where(student_id: params[:id])
+		@one_on_ones = OneOnOne.where(teacher_id: params[:id])
 
-	#   # now with instance methods!
-	  # @student.one_on_ones_as_student
-	  # @teacher.one_on_ones_as_teacher
-	  # @course.one_on_ones
+	  # now with instance methods!
+	  @student.one_on_ones_as_student
+	  @teacher.one_on_ones_as_teacher
+	  @course.one_on_ones
     
-  #   # you can get an array of students with an instance method on a course:
-		# @students = @course.students
+    # you can get an array of students with an instance method on a course:
+		@students = @course.students
+    @teachers = @course.teachers
 
-		# # and you can get an array of contributions from each student by calling instance methods on the user:
-		# @students.each do |student|
-		#   student.quizzes
-		#   student.homeworks
-		#   student.projects
-		# end
+		# and you can get an array of contributions from each student by calling instance methods on the user:
+		@students.each do |student|
+		  student.quizzes
+		  student.homeworks
+		  student.projects
+		end
 
 	end 
 	
